@@ -1,6 +1,6 @@
 package org.selenium.pom.objects;
 
-public class BillingAddress {
+public class BillingAddressInfo {
 
     private String firstName;
     private String lastName;
@@ -12,7 +12,7 @@ public class BillingAddress {
         return firstName;
     }
 
-    public BillingAddress setFirstName(String firstName) {
+    public BillingAddressInfo setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -21,7 +21,7 @@ public class BillingAddress {
         return lastName;
     }
 
-    public BillingAddress setLastName(String lastName) {
+    public BillingAddressInfo setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -30,7 +30,7 @@ public class BillingAddress {
         return addressLineOne;
     }
 
-    public BillingAddress setAddressLineOne(String addressLineOne) {
+    public BillingAddressInfo setAddressLineOne(String addressLineOne) {
         this.addressLineOne = addressLineOne;
         return this;
     }
@@ -39,7 +39,7 @@ public class BillingAddress {
         return city;
     }
 
-    public BillingAddress setCity(String city) {
+    public BillingAddressInfo setCity(String city) {
         this.city = city;
         return this;
     }
@@ -48,7 +48,7 @@ public class BillingAddress {
         return postalCode;
     }
 
-    public BillingAddress setPostalCode(String postalCode) {
+    public BillingAddressInfo setPostalCode(String postalCode) {
         this.postalCode = postalCode;
         return this;
     }
@@ -57,7 +57,7 @@ public class BillingAddress {
         return email;
     }
 
-    public BillingAddress setEmail(String email) {
+    public BillingAddressInfo setEmail(String email) {
         this.email = email;
         return this;
     }

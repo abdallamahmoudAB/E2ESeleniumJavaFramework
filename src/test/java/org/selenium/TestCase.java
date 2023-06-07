@@ -1,6 +1,7 @@
 package org.selenium;
 
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.objects.BillingAddress;
 import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
@@ -12,6 +13,14 @@ public class TestCase extends BaseTest {
 
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws InterruptedException {
+
+        BillingAddress billingAddress = new BillingAddress();
+        billingAddress.setFirstName("demo")
+        .setLastName("user")
+        .setAddressLineOne("San Francisco")
+        .setCity("San Francisco")
+        .setPostalCode("95455")
+        .setEmail("lerewa7361@wnpop.com");
 
         StorePage storePage = new HomePage(driver) // fluent interface
                             .clickStoreMenuLink()
@@ -31,12 +40,7 @@ public class TestCase extends BaseTest {
 
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton();
 
-        checkoutPage.enterFirstName("demo")
-                        .enterLastName("user")
-                        .enterAddressLineOne("San Francisco")
-                        .enterCity("San Francisco")
-                        .enterPostCode("95455")
-                        .enterEmail("lerewa7361@wnpop.com");
+        checkoutPage.setBillingAddress(billingAddress);
         Thread.sleep(3000);
         checkoutPage.placeOrder();
         Thread.sleep(3000);

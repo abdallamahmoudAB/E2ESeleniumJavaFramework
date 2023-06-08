@@ -2,6 +2,8 @@ package org.selenium.pom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAddress;
 
@@ -23,9 +25,16 @@ public class CheckoutPage extends BasePage {
     private final By userNameField = By.cssSelector("#username");
     private final By passwordField = By.cssSelector("#password");
     private final By loginButton = By.name("login");
+    private final By overlay = By.cssSelector(".blockUI.blockOverlay");
+
+
 
     public CheckoutPage enterFirstName(String firstName){
-        driver.findElement(firstNameField).sendKeys(firstName);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField));
+        element.clear();
+        element.sendKeys(firstName);
+//        driver.findElement(firstNameField).clear();
+//        driver.findElement(firstNameField).sendKeys(firstName);
         return this;
     }
     public CheckoutPage enterLastName(String lastName){
@@ -63,11 +72,13 @@ public class CheckoutPage extends BasePage {
                 .enterEmail(billingAddress.getEmail());
     }
     public CheckoutPage placeOrder(){
+      waitForOverlaysToDisappear(overlay);
         driver.findElement(placeOrderButton).click();
         return this;
     }
     public String getNotice(){
-        return driver.findElement(successNotice).getText();
+       return wait.until(ExpectedConditions.visibilityOfElementLocated(successNotice)).getText();
+//        return driver.findElement(successNotice).getText();
     }
 
     public CheckoutPage clickLoginLink(){
@@ -76,7 +87,8 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterUserName(String userName){
-        driver.findElement(userNameField).sendKeys(userName);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField)).sendKeys(userName);
+//        driver.findElement(userNameField).sendKeys(userName);
         return this;
     }
 

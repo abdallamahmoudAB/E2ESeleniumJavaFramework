@@ -74,10 +74,13 @@ public class TestCase extends BaseTest {
 
                 .enterFirstName("demo")
                 .enterLastName("user")
+                .selectCountry("United States (US)")
                 .enterAddressLineOne("San Francisco")
                 .enterCity("San Francisco")
+                .selectState("Colorado")
                 .enterPostCode("95455")
                 .enterEmail("lerewa7361@wnpop.com");
+
 
 
         checkoutPage.placeOrder();

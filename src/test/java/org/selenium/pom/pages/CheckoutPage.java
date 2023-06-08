@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAddress;
 
@@ -27,6 +28,9 @@ public class CheckoutPage extends BasePage {
     private final By loginButton = By.name("login");
     private final By overlay = By.cssSelector(".blockUI.blockOverlay");
 
+    private final By countryDropDown = By.id("billing_country");
+    private final By stateDropDown = By.id("billing_state");
+
 
 
     public CheckoutPage enterFirstName(String firstName){
@@ -42,6 +46,19 @@ public class CheckoutPage extends BasePage {
         driver.findElement(lastNameField).sendKeys(lastName);
         return this;
     }
+
+    public CheckoutPage selectCountry(String countryName){
+        Select select = new Select(driver.findElement(countryDropDown));
+        select.selectByVisibleText(countryName);
+        return this;
+    }
+
+    public CheckoutPage selectState(String stateName){
+        Select select = new Select(driver.findElement(stateDropDown));
+        select.selectByVisibleText(stateName);
+        return this;
+    }
+
     public CheckoutPage enterAddressLineOne(String addressLineOne){
         driver.findElement(addressLineOneField).clear();
         driver.findElement(addressLineOneField).sendKeys(addressLineOne);
@@ -66,8 +83,10 @@ public class CheckoutPage extends BasePage {
     public CheckoutPage setBillingAddress(BillingAddress billingAddress){
        return enterFirstName(billingAddress.getFirstName())
                 .enterLastName(billingAddress.getLastName())
+               .selectCountry(billingAddress.getCountry())
                 .enterAddressLineOne(billingAddress.getAddressLineOne())
                 .enterCity(billingAddress.getCity())
+               .selectState(billingAddress.getState())
                 .enterPostCode(billingAddress.getPostalCode())
                 .enterEmail(billingAddress.getEmail());
     }

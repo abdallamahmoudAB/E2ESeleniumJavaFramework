@@ -46,9 +46,9 @@ public class TestCase extends BaseTest {
 
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton();
 
-        checkoutPage.setBillingAddress(billingAddress);
-
-        checkoutPage.placeOrder();
+        checkoutPage.setBillingAddress(billingAddress)
+                .selectDirectBankTransfer()
+                .placeOrder();
 
         Assert.assertEquals(checkoutPage.getNotice(), "Thank you. Your order has been received.");
 
@@ -81,8 +81,7 @@ public class TestCase extends BaseTest {
                 .enterPostCode("95455")
                 .enterEmail("lerewa7361@wnpop.com");
 
-
-
+        checkoutPage.selectDirectBankTransfer();
         checkoutPage.placeOrder();
 
 

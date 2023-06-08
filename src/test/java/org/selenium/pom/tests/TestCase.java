@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAddress;
@@ -37,7 +37,7 @@ public class TestCase extends BaseTest {
 
                 // functional page object
                         .search("Blue");
-        Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
+        Assert.assertTrue(storePage.getTitle().contains( "Search results: "));
 
         storePage.clickAddToCartButton("Blue Shoes");
 

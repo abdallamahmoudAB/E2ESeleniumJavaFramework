@@ -28,7 +28,7 @@ public class TestCase extends BaseTest {
 //        .setPostalCode("95455")
 //        .setEmail("lerewa7361@wnpop.com");
 
-        StorePage storePage = new HomePage(driver) // fluent interface
+        StorePage storePage = new HomePage(getDriver()) // fluent interface
                             .clickStoreMenuLink()
 
                 // structual page object - Builder Pattern
@@ -57,7 +57,7 @@ public class TestCase extends BaseTest {
     @Test
     public void loginAndCheckoutUsingDirectBankTransfer()  {
 
-        StorePage storePage = new HomePage(driver)
+        StorePage storePage = new HomePage(getDriver())
                                 .clickStoreMenuLink()
                                     .search("Blue");
         Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="Regression">
+<!--        parallel="tests" -> suite level-->
+<!--        parallel="methods" -> test level-->
+<suite name="All Test Suite" thread-count="2">
+    <test verbose="2" preserve-order="true" thread-count="2" name="Regression" >
         <classes>
             <class name="org.selenium.pom.tests.TestCase">
                 <methods>

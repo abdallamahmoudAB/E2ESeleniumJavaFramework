@@ -6,6 +6,7 @@ import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
+import org.selenium.pom.utils.ConfigLoader;
 import org.selenium.pom.utils.JacksonUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -70,7 +71,9 @@ public class TestCase extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton();
         checkoutPage.clickLoginLink();
 
-        checkoutPage.login("dummy", "user")
+        checkoutPage.login(ConfigLoader.getInstance().getUsername(), ConfigLoader.getInstance().getPassword())
+
+//        checkoutPage.login("dummy", "user")
 
                 .enterFirstName("demo")
                 .enterLastName("user")
